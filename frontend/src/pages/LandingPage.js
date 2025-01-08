@@ -5,7 +5,7 @@ import {
   Typography,
   Button,
   Container,
-  Grid2,
+  Grid,
   Box,
   Card,
   CardContent,
@@ -13,6 +13,8 @@ import {
   createTheme,
   ThemeProvider,
   Link,
+  useMediaQuery,
+  CssBaseline,
 } from "@mui/material";
 
 const theme = createTheme({
@@ -27,24 +29,34 @@ const theme = createTheme({
       default: "#f1f8e9", // Light greenish background
     },
     text: {
-      primary: "#3e2723", // Dark brown for text
-      secondary: "#6d4c41", // Soft brown for secondary text
+      primary: "#3e2723", // Dark brown
+      secondary: "#6d4c41", // Soft brown
     },
   },
   typography: {
     fontFamily: "Roboto, Arial",
     h3: {
       fontWeight: 700,
+      fontSize: "2.5rem",
+      "@media (max-width:600px)": {
+        fontSize: "2rem",
+      },
     },
-    body1: {
-      lineHeight: 1.6,
+    h6: {
+      fontSize: "1.2rem",
+      "@media (max-width:600px)": {
+        fontSize: "1rem",
+      },
     },
   },
 });
 
 const LandingPage = () => {
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   return (
     <ThemeProvider theme={theme}>
+      <CssBaseline />
       {/* Header */}
       <AppBar position="static" color="primary">
         <Toolbar>
@@ -62,7 +74,7 @@ const LandingPage = () => {
         sx={{
           background: "linear-gradient(to right, #4caf50, #81c784)",
           color: "white",
-          py: 10,
+          py: isMobile ? 6 : 10,
           textAlign: "center",
         }}
       >
@@ -97,10 +109,12 @@ const LandingPage = () => {
         >
           Explore the key benefits of our intelligent agricultural system.
         </Typography>
-        <Grid2 container spacing={4}>
+        <Grid container spacing={4} justifyContent="center">
           {/* Feature 1 */}
-          <Grid2 item xs={12} sm={6} md={4}>
-            <Card sx={{ boxShadow: 3, borderRadius: 2 }}>
+          <Grid item xs={12} sm={6} md={4}>
+            <Card
+              sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+            >
               <CardMedia
                 component="img"
                 height="160"
@@ -116,10 +130,12 @@ const LandingPage = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid2>
+          </Grid>
           {/* Feature 2 */}
-          <Grid2 item xs={12} sm={6} md={4}>
-            <Card sx={{ boxShadow: 3, borderRadius: 2 }}>
+          <Grid item xs={12} sm={6} md={4}>
+            <Card
+              sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+            >
               <CardMedia
                 component="img"
                 height="160"
@@ -135,10 +151,12 @@ const LandingPage = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid2>
+          </Grid>
           {/* Feature 3 */}
-          <Grid2 item xs={12} sm={6} md={4}>
-            <Card sx={{ boxShadow: 3, borderRadius: 2 }}>
+          <Grid item xs={12} sm={6} md={4}>
+            <Card
+              sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+            >
               <CardMedia
                 component="img"
                 height="160"
@@ -155,8 +173,8 @@ const LandingPage = () => {
                 </Typography>
               </CardContent>
             </Card>
-          </Grid2>
-        </Grid2>
+          </Grid>
+        </Grid>
       </Container>
 
       {/* Footer */}
