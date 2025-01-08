@@ -61,33 +61,61 @@ const HomePage = () => {
       <CssBaseline />
       {/* Header */}
 
-
       {/* Hero Section */}
       <Box
         sx={{
-          background: "linear-gradient(to right,rgb(10, 17, 11), #81c784)",
+          backgroundImage: `
+      linear-gradient(to right, rgba(10, 17, 11, 0.5) 30%, rgba(129, 199, 132, 1) 100%),
+      url('https://png.pngtree.com/thumb_back/fh260/background/20240622/pngtree-rural-scene-green-agricultural-fields-of-moravia-at-daytime-nice-weather-image_15805897.jpg')
+    `,
+          backgroundSize: "cover", // Ensure the image covers the entire container
+          backgroundRepeat: "no-repeat", // Prevent tiling of the image
+          backgroundPosition: "center", // Center the background image
           color: "white",
           py: isMobile ? 6 : 10,
           textAlign: "center",
+          paddingTop: "17.3%",
         }}
       >
-        <Container sx={{
-          
-        }}>
-          <Typography variant="h3" gutterBottom sx={{
-            textShadow: "2px 15px 14px rgb(28, 63, 33)" 
-          }}>
+        <Container sx={{}}>
+          <Typography
+            variant="h3"
+            gutterBottom
+            sx={{
+              textShadow: "2px 15px 14px rgb(28, 63, 33)",
+              fontFamily: "Paris2024",
+              fontSize: "370%",
+            }}
+          >
             Revolutionizing Agriculture
           </Typography>
-          <Typography variant="h6" gutterBottom>
+          <Typography
+            variant="h6"
+            gutterBottom
+            sx={{
+              textShadow: "2px 15px 14px rgb(28, 63, 33)",
+              fontFamily: "Paris2024",
+              fontSize: "130%",
+            }}
+          >
             Optimize crop selection and fertilizer usage with IoT and ML.
           </Typography>
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             size="large"
-            sx={{ mt: 3 }}
-            onClick={()=> navigate("/login")}
+            sx={{
+              mt: 3,
+              fontFamily: "MyCustomFont",
+              fontSize: "90%",
+              color: "#323232",
+              "&:hover": {
+                backgroundColor: "#449c45",
+                color: "#222222",
+                boxShadow: "1px 3px 15px 5px rgba(40,91,40, 0.7)"
+              },
+            }}
+            onClick={() => navigate("/login")}
           >
             Get Started
           </Button>

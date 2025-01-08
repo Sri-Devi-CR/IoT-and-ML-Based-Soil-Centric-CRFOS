@@ -25,23 +25,83 @@ const Navbar = () => {
           variant="h6"
           sx={{
             flexGrow: 1,
+            fontFamily: "Paris2024",
             cursor: "pointer",
+            "&:hover": {
+              color: "black",
+              backgroundColor: "transparent", // Prevent background color change on hover
+            },
           }}
           onClick={() => navigate("/")}
         >
           IoT & ML-Based CRFOS
         </Typography>
-
-        <Button component={Link} to="/home">
+        <Button
+          component={Link}
+          to="/home"
+          disableRipple
+          sx={{
+            fontFamily: "Paris2024",
+            color: "#333", // Customize button text color
+            textDecoration: "none", // Remove underline
+            fontWeight: "bold",
+            "&:hover": {
+              color: "black",
+              backgroundColor: "transparent", // Prevent background color change on hover
+            },
+          }}
+        >
           Home
         </Button>
-        <Button component={Link} to="/login">
+        <Button
+          component={Link}
+          to="/login"
+          disableRipple
+          sx={{
+            color: "#333",
+            fontFamily: "Paris2024",
+            textDecoration: "none",
+            fontWeight: "bold",
+            "&:hover": {
+              color: "black",
+              backgroundColor: "transparent",
+            },
+          }}
+        >
           Log in
         </Button>
-        <Button component={Link} to="/register">
+        <Button
+          component={Link}
+          to="/register"
+          disableRipple
+          sx={{
+            color: "#333",
+            fontFamily: "Paris2024",
+            textDecoration: "none",
+            fontWeight: "bold",
+            "&:hover": {
+              color: "black",
+              backgroundColor: "transparent",
+            },
+          }}
+        >
           Register
         </Button>
-        <Button component={Link} to="/About">
+        <Button
+          component={Link}
+          to="/about"
+          disableRipple
+          sx={{
+            color: "#333",
+            textDecoration: "none",
+            fontFamily: "Paris2024",
+            fontWeight: "bold",
+            "&:hover": {
+              color: "black",
+              backgroundColor: "transparent",
+            },
+          }}
+        >
           About us
         </Button>
       </Toolbar>
