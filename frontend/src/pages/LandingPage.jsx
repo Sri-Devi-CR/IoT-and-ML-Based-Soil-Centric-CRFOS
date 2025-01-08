@@ -65,7 +65,7 @@ const HomePage = () => {
       <Box
         sx={{
           backgroundImage: `
-      linear-gradient(to right, rgba(10, 17, 11, 0.5) 30%, rgba(129, 199, 132, 1) 100%),
+      linear-gradient(to right, rgba(10, 17, 11, 0.5) 30%, rgba(129, 199, 132, 0.6) 100%),
       url('https://png.pngtree.com/thumb_back/fh260/background/20240622/pngtree-rural-scene-green-agricultural-fields-of-moravia-at-daytime-nice-weather-image_15805897.jpg')
     `,
           backgroundSize: "cover", // Ensure the image covers the entire container
@@ -75,6 +75,7 @@ const HomePage = () => {
           py: isMobile ? 6 : 10,
           textAlign: "center",
           paddingTop: "17.3%",
+          height: "80vh",
         }}
       >
         <Container sx={{}}>
@@ -112,7 +113,7 @@ const HomePage = () => {
               "&:hover": {
                 backgroundColor: "#449c45",
                 color: "#222222",
-                boxShadow: "1px 3px 15px 5px rgba(40,91,40, 0.7)"
+                boxShadow: "1px 3px 15px 5px rgba(40,91,40, 0.7)",
               },
             }}
             onClick={() => navigate("/login")}
@@ -124,7 +125,15 @@ const HomePage = () => {
 
       {/* Features Section */}
       <Container sx={{ my: 8 }}>
-        <Typography variant="h4" align="center" gutterBottom>
+        <Typography
+          variant="h4"
+          align="center"
+          gutterBottom
+          sx={{
+            fontFamily: "Paris2024",
+            fontSize: "200%",
+          }}
+        >
           Features
         </Typography>
         <Typography
@@ -148,7 +157,14 @@ const HomePage = () => {
                 alt="Soil Analysis"
               />
               <CardContent>
-                <Typography variant="h6" color="textPrimary">
+                <Typography
+                  variant="h6"
+                  color="textPrimary"
+                  sx={{
+                    fontFamily: "Paris2024",
+                    fontSize: "135%",
+                  }}
+                >
                   Soil Analysis
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
@@ -169,7 +185,14 @@ const HomePage = () => {
                 alt="Crop Recommendations"
               />
               <CardContent>
-                <Typography variant="h6" color="textPrimary">
+                <Typography
+                  variant="h6"
+                  color="textPrimary"
+                  sx={{
+                    fontFamily: "Paris2024",
+                    fontSize: "135%",
+                  }}
+                >
                   Crop Recommendations
                 </Typography>
                 <Typography variant="body2" color="textSecondary">
@@ -190,7 +213,14 @@ const HomePage = () => {
                 alt="Fertilizer Optimization"
               />
               <CardContent>
-                <Typography variant="h6" color="textPrimary">
+                <Typography
+                  variant="h6"
+                  color="textPrimary"
+                  sx={{
+                    fontFamily: "Paris2024",
+                    fontSize: "135%",
+                  }}
+                >
                   Fertilizer Optimization
                 </Typography>
                 <Typography variant="body2" color="textSecondary">

@@ -9,7 +9,7 @@ const Navbar = () => {
       position="fixed"
       elevation={0} // Remove shadow
       sx={{
-        background: "rgba(150, 255, 150, 0.3)", // Transparent white
+        background: "rgba(20, 20, 20, 0.3)", // Transparent white
         backdropFilter: "blur(10px)", // Frosted glass effect
         boxShadow: "3px 4px 30px rgba(0, 0, 0, 0.2)", // Optional soft shadow
         // borderBottom: "1px solid rgba(255, 255, 255, 0.2)", // Optional border
@@ -18,7 +18,7 @@ const Navbar = () => {
     >
       <Toolbar
         sx={{
-          color: "#323232",
+          color: "#ffffff",
         }}
       >
         <Typography
@@ -28,7 +28,7 @@ const Navbar = () => {
             fontFamily: "Paris2024",
             cursor: "pointer",
             "&:hover": {
-              color: "black",
+              color: "#ffffff",
               backgroundColor: "transparent", // Prevent background color change on hover
             },
           }}
@@ -42,11 +42,11 @@ const Navbar = () => {
           disableRipple
           sx={{
             fontFamily: "Paris2024",
-            color: "#333", // Customize button text color
+            color: "#cdcdcd", // Customize button text color
             textDecoration: "none", // Remove underline
             fontWeight: "bold",
             "&:hover": {
-              color: "black",
+              color: "#dedede",
               backgroundColor: "transparent", // Prevent background color change on hover
             },
           }}
@@ -58,12 +58,12 @@ const Navbar = () => {
           to="/login"
           disableRipple
           sx={{
-            color: "#333",
+            color: "#cdcdcd",
             fontFamily: "Paris2024",
             textDecoration: "none",
             fontWeight: "bold",
             "&:hover": {
-              color: "black",
+              color: "#dedede",
               backgroundColor: "transparent",
             },
           }}
@@ -75,12 +75,12 @@ const Navbar = () => {
           to="/register"
           disableRipple
           sx={{
-            color: "#333",
+            color: "#cdcdcd",
             fontFamily: "Paris2024",
             textDecoration: "none",
             fontWeight: "bold",
             "&:hover": {
-              color: "black",
+              color: "#dedede",
               backgroundColor: "transparent",
             },
           }}
@@ -92,12 +92,12 @@ const Navbar = () => {
           to="/about"
           disableRipple
           sx={{
-            color: "#333",
+            color: "#cdcdcd",
             textDecoration: "none",
             fontFamily: "Paris2024",
             fontWeight: "bold",
             "&:hover": {
-              color: "black",
+              color: "#dedede",
               backgroundColor: "transparent",
             },
           }}

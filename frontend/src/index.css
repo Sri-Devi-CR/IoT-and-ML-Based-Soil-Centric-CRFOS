@@ -23,3 +23,8 @@ code {
   font-family: "Paris2024";
   src: url("./fonts/PARIS2024.ttf") format("truetype");
 }
+
+@font-face {
+  font-family: "CWCReg";
+  src: url("./fonts/CWC-Medium.ttf") format("truetype");
+}
