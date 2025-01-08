@@ -51,7 +51,7 @@ const theme = createTheme({
   },
 });
 
-const LandingPage = () => {
+const HomePage = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   return (
@@ -207,4 +207,4 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+export default HomePage;
