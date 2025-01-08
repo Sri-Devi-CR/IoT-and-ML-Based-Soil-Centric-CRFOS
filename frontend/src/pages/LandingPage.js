@@ -58,16 +58,7 @@ const HomePage = () => {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       {/* Header */}
-      <AppBar position="static" color="primary">
-        <Toolbar>
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
-            IoT & ML-Based CRFOS
-          </Typography>
-          <Button color="inherit">Home</Button>
-          <Button color="inherit">Features</Button>
-          <Button color="inherit">Contact</Button>
-        </Toolbar>
-      </AppBar>
+
 
       {/* Hero Section */}
       <Box
