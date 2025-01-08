@@ -1,0 +1,33 @@
+.cascading-right {
+  margin-right: -50px;
+}
+
+@media (max-width: 900px) {
+  .cascading-right {
+    margin-right: 0;
+  }
+}
+
+  .background-container {
+    overflow:hidden;
+    background-image: url('https://www.rwongphoto.com/images/xl/RW6498.jpg'); /* Replace with your image URL */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh; /* Full-screen height */
+    width: 100%; /* Full width */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .glass-effect {
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent white background */
+    border-radius: 15px; /* Rounded corners for a smooth look */
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37); /* Subtle shadow for depth */
+    backdrop-filter: blur(10px); /* Blurs the background behind the card */
+    -webkit-backdrop-filter: blur(10px); /* For Safari support */
+    border: 1px solid rgba(255, 255, 255, 0.18); /* Border for definition */
+  }
+  
+  

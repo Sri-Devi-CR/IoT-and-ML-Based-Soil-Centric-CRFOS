@@ -1,7 +1,7 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"
 import {
-  AppBar,
-  Toolbar,
+  
   Typography,
   Button,
   Container,
@@ -51,8 +51,10 @@ const theme = createTheme({
   },
 });
 
+
 const HomePage = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+  const navigate=useNavigate()
 
   return (
     <ThemeProvider theme={theme}>
@@ -63,14 +65,18 @@ const HomePage = () => {
       {/* Hero Section */}
       <Box
         sx={{
-          background: "linear-gradient(to right, #4caf50, #81c784)",
+          background: "linear-gradient(to right,rgb(10, 17, 11), #81c784)",
           color: "white",
           py: isMobile ? 6 : 10,
           textAlign: "center",
         }}
       >
-        <Container>
-          <Typography variant="h3" gutterBottom>
+        <Container sx={{
+          
+        }}>
+          <Typography variant="h3" gutterBottom sx={{
+            textShadow: "2px 15px 14px rgb(28, 63, 33)" 
+          }}>
             Revolutionizing Agriculture
           </Typography>
           <Typography variant="h6" gutterBottom>
@@ -81,6 +87,7 @@ const HomePage = () => {
             color="secondary"
             size="large"
             sx={{ mt: 3 }}
+            onClick={()=> navigate("/login")}
           >
             Get Started
           </Button>

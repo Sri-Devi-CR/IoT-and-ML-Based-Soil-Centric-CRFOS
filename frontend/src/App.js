@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 import LandingPage from "./pages/LandingPage";
 import CropRecommendationPage from "./pages/CropRecommendationPage";
 import ResultPage from "./pages/ResultPage";
+import Login from "./pages/Login/login"
+import Register from "./pages/Register/register";
 
 const App = () => {
   return (
@@ -12,13 +14,15 @@ const App = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
         <Route
           path="/crop-recommendation"
           element={<CropRecommendationPage />}
         />
         <Route path="/results" element={<ResultPage />} />
       </Routes>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 };
