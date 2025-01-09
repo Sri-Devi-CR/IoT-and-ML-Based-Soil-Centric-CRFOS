@@ -6,9 +6,7 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBInput,
-  MDBCheckbox,
-  MDBIcon,
+  MDBInput
 } from "mdb-react-ui-kit";
 import "./register.css";
 import { useNavigate } from "react-router-dom";

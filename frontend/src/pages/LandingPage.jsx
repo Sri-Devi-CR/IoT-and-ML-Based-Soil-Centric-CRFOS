@@ -16,7 +16,6 @@ import {
   useMediaQuery,
   CssBaseline,
 } from "@mui/material";
-import { motion } from "framer-motion"
 
 const theme = createTheme({
   palette: {
@@ -56,13 +55,6 @@ const theme = createTheme({
 const LandingPage = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
   const navigate = useNavigate()
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-    hover: {
-      boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
-    },
-  };
 
   return (
     <ThemeProvider theme={theme}>

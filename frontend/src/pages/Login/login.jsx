@@ -6,11 +6,8 @@ import {
   MDBCol,
   MDBCard,
   MDBCardBody,
-  MDBInput,
-  MDBCheckbox,
-  MDBIcon,
+  MDBInput
 } from 'mdb-react-ui-kit';
-import { Container } from '@mui/material';
 import './login.css'; // Add a CSS file for styles
 import { useNavigate } from 'react-router-dom';
 
