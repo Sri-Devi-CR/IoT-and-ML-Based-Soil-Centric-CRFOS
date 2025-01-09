@@ -104,7 +104,7 @@ const LandingPage = () => {
             sx={{
               textShadow: "2px 15px 14px rgb(28, 63, 33)",
               fontFamily: "Paris2024",
-              fontSize: "130%",
+              fontSize: "150%",
             }}
           >
             Optimize crop selection and fertilizer usage with IoT and ML.
