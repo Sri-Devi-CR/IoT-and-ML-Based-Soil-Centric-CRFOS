@@ -33,7 +33,7 @@ function FertilizerOptimization() {
   return (
     <MDBContainer
       fluid
-      className="p-4 background-radial-gradient overflow-hidden background-container2"
+      className="p-4 background-radial-gradient overflow-hidden background-container3"
       style={{
         display: "flex",
         justifyContent: "center",
@@ -127,12 +127,13 @@ function FertilizerOptimization() {
 
             {/* Location Input */}
             <MDBInput
-              wrapperClass="mb-4"
+              wrapperClass="mb-2"
               label="Location"
               id="location"
               type="text"
               value={location}
-              onChange={(e) => setLocation(e.target.value)}
+                          onChange={(e) => setLocation(e.target.value)}
+                
               style={{
                 borderRadius: "5px",
                 border: "1px dashed #111111",
@@ -150,8 +151,10 @@ function FertilizerOptimization() {
             <FormControl variant="standard" fullWidth sx={{ mb: 4 }}>
               <InputLabel
                 sx={{
-                  color: "white",
+                  color: "rgba(255,255,255,1)",
                   fontFamily: "MyCustomFont",
+                  //   backgroundColor: "pink",
+                  paddingLeft: "10px",
                 }}
               >
                 Crop Choice
@@ -163,14 +166,14 @@ function FertilizerOptimization() {
                 defaultValue=""
                 sx={{
                   borderRadius: "5px",
-                  border: "1px solid white",
+                  border: "1px solid #dedede",
                   backgroundColor: "rgba(50,50,50,0.5)",
                   color: "white",
+                  paddingLeft: "10px",
                   fontFamily: "CWCReg",
                   "& .MuiSelect-select": {
                     fontSize: "1rem",
-                    padding: "10px",
-                    backgroundColor: "rgba(50,50,50,0.2)",
+                    backgroundColor: "rgba(50,50,50,0)",
                   },
                 }}
               >

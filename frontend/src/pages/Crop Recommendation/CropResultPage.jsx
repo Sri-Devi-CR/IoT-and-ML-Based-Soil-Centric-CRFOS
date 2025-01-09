@@ -1,19 +1,24 @@
 import React from "react";
 import { MDBContainer, MDBCard, MDBCardBody, MDBBtn } from "mdb-react-ui-kit";
+import { useNavigate } from "react-router-dom";
 
 function ResultPage() {
+  const navigate = useNavigate();
   const randomCrop = ["Rice", "Wheat", "Maize", "Sugarcane", "Cotton"][
     Math.floor(Math.random() * 5)
   ];
 
   return (
     <MDBContainer
-      className="p-4"
+      className="p-4 background-container5"
+      fluid
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
+        width: "100%",
+        // backgroundColor:"pink"
       }}
     >
       <MDBCard
@@ -73,6 +78,7 @@ function ResultPage() {
               fontWeight: "bold",
               marginTop: "1rem",
             }}
+            onClick={()=>navigate('/home') }
           >
             Back to Home
           </MDBBtn>

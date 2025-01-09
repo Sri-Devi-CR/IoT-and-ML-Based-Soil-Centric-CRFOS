@@ -129,6 +129,7 @@ function CropRecommendationPage() {
                 sx={{
                   color: "white",
                   fontFamily: "MyCustomFont",
+                  paddingLeft:"10px"
                 }}
               >
                 Soil Type
@@ -143,11 +144,12 @@ function CropRecommendationPage() {
                   border: "1px solid #dedede",
                   backgroundColor: "rgba(50,50,50,0.5)",
                   color: "white",
+                  paddingLeft:"10px",
                   fontFamily: "CWCReg",
                   "& .MuiSelect-select": {
                     color: "white",
                     fontSize: "1rem",
-                    backgroundColor: "rgba(50,50,50,0.2)",
+                    backgroundColor: "rgba(50,50,50,0)",
                   },
                 }}
               >
@@ -163,6 +165,7 @@ function CropRecommendationPage() {
                 sx={{
                   color: "white",
                   fontFamily: "MyCustomFont",
+                  paddingLeft:"10px"
                 }}
               >
                 Planting Season
@@ -177,10 +180,11 @@ function CropRecommendationPage() {
                   border: "1px solid #dedede",
                   backgroundColor: "rgba(50,50,50,0.5)",
                   color: "white",
+                  paddingLeft:"10px",
                   fontFamily: "CWCReg",
                   "& .MuiSelect-select": {
                     fontSize: "1rem",
-                    backgroundColor: "rgba(50,50,50,0.2)",
+                    backgroundColor: "rgba(50,50,50,0)",
                     color: "white",
                   },
                 }}

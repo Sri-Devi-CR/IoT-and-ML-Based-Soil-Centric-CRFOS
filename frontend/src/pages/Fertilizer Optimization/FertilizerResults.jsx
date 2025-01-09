@@ -1,7 +1,9 @@
 import React from "react";
 import { MDBContainer, MDBCard, MDBCardBody, MDBBtn } from "mdb-react-ui-kit";
+import { useNavigate } from "react-router-dom";
 
 function FertilizerResults() {
+  const navigate = useNavigate();
   const randomFertilizerValues = {
     nitrogen: Math.floor(Math.random() * 50 + 50),
     phosphorus: Math.floor(Math.random() * 50 + 50),
@@ -10,7 +12,8 @@ function FertilizerResults() {
 
   return (
     <MDBContainer
-      className="p-4"
+      className="p-4 background-container6"
+      fluid
       style={{
         display: "flex",
         justifyContent: "center",
@@ -64,9 +67,9 @@ function FertilizerResults() {
               fontSize: "1.2rem",
             }}
           >
-            <li>Nitrogen: {randomFertilizerValues.nitrogen} kg</li>
-            <li>Phosphorus: {randomFertilizerValues.phosphorus} kg</li>
-            <li>Potassium: {randomFertilizerValues.potassium} kg</li>
+            <li>Nitrogen: {randomFertilizerValues.nitrogen} g</li>
+            <li>Phosphorus: {randomFertilizerValues.phosphorus} g</li>
+            <li>Potassium: {randomFertilizerValues.potassium} g</li>
           </ul>
 
           <MDBBtn
@@ -79,6 +82,7 @@ function FertilizerResults() {
               fontFamily: "Paris2024",
               fontWeight: "bold",
             }}
+            onClick={() => navigate("/home")}
           >
             Back to Home
           </MDBBtn>
