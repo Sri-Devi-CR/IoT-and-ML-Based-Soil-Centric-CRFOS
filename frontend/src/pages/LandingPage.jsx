@@ -74,7 +74,7 @@ const LandingPage = () => {
         sx={{
           backgroundImage: `
       linear-gradient(to right, rgba(10, 17, 11, 0.5) 30%, rgba(129, 199, 132, 0.6) 100%),
-      url('https://png.pngtree.com/thumb_back/fh260/background/20240622/pngtree-rural-scene-green-agricultural-fields-of-moravia-at-daytime-nice-weather-image_15805897.jpg')
+      url('images/landing.jpg')
     `,
           backgroundSize: "cover", // Ensure the image covers the entire container
           backgroundRepeat: "no-repeat", // Prevent tiling of the image
@@ -183,7 +183,7 @@ const LandingPage = () => {
               <CardMedia
                 component="img"
                 height="160"
-                image="https://sustainable-earth.org/wp-content/uploads/AOE-Blog-Organic-Soil-e1678985025262.jpeg"
+                image="images/crop-recommendation.jpg"
                 alt="Soil Analysis"
               />
               <CardContent>
@@ -219,7 +219,7 @@ const LandingPage = () => {
               <CardMedia
                 component="img"
                 height="160"
-                image="https://storage.googleapis.com/kaggle-datasets-images/4933767/8305330/16928419f10aea52c9156b0cc4dc86ee/dataset-cover.jpg?t=2024-05-03-21-04-19"
+                image="images/fertilizer-optimization.jpg"
                 alt="Crop Recommendations"
               />
               <CardContent>
@@ -254,7 +254,7 @@ const LandingPage = () => {
               <CardMedia
                 component="img"
                 height="160"
-                image="https://eos.com/wp-content/uploads/2023/11/components-of-different-types-of-fertilizers.jpg.webp"
+                image="images/fertilizers.webp"
                 alt="Fertilizer Optimization"
               />
               <CardContent>

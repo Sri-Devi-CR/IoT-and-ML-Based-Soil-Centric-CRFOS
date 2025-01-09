@@ -10,7 +10,7 @@
 
   .background-container {
     overflow:hidden;
-    background-image: url('https://www.rwongphoto.com/images/xl/RW6498.jpg'); /* Replace with your image URL */
+    background-image: url('../../../public/images/background.jpg'); /* Replace with your image URL */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

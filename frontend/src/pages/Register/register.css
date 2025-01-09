@@ -1,6 +1,6 @@
 .background-container2 {
     overflow: hidden;
-    background-image: linear-gradient(to left, rgba(10, 17, 11, 0.5) 0%, rgba(129, 199, 132, 0.4) 100%),url('https://www.hdwallpapers.in/download/farm_road_grass_field_houses_trees_landscape_sunlight_blue_sky_scenery_4k_hd_nature-3840x2160.jpg'); /* Replace with your image URL */
+    background-image: linear-gradient(to left, rgba(10, 17, 11, 0.5) 0%, rgba(129, 199, 132, 0.4) 100%),url('../../../public/images/background.jpg'); /* Replace with your image URL */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
