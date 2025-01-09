@@ -3,7 +3,7 @@ import { AppBar, Toolbar, Typography, Button, Box } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
-  const navigate=useNavigate()
+  const navigate = useNavigate()
   return (
     <AppBar
       position="fixed"
@@ -36,7 +36,7 @@ const Navbar = () => {
         >
           IoT & ML-Based CRFOS
         </Typography>
-        <Button
+        {/* <Button
           component={Link}
           to="/home"
           disableRipple
@@ -45,14 +45,16 @@ const Navbar = () => {
             color: "#cdcdcd", // Customize button text color
             textDecoration: "none", // Remove underline
             fontWeight: "bold",
+            transition: "transform 0.3s",
             "&:hover": {
               color: "#dedede",
+              transform: "scale(1.03)",
               backgroundColor: "transparent", // Prevent background color change on hover
             },
           }}
         >
           Home
-        </Button>
+        </Button> */}
         <Button
           component={Link}
           to="/login"
@@ -62,9 +64,13 @@ const Navbar = () => {
             fontFamily: "Paris2024",
             textDecoration: "none",
             fontWeight: "bold",
+            transition: "transform 0.3s",
+
             "&:hover": {
               color: "#dedede",
               backgroundColor: "transparent",
+              
+              transform: "scale(1.03)"
             },
           }}
         >
@@ -79,9 +85,13 @@ const Navbar = () => {
             fontFamily: "Paris2024",
             textDecoration: "none",
             fontWeight: "bold",
+            transition: "transform 0.3s",
             "&:hover": {
               color: "#dedede",
               backgroundColor: "transparent",
+              transform: "scale(1.03)"
+              
+
             },
           }}
         >
@@ -96,9 +106,11 @@ const Navbar = () => {
             textDecoration: "none",
             fontFamily: "Paris2024",
             fontWeight: "bold",
+            transition: "transform 0.3s",
             "&:hover": {
               color: "#dedede",
               backgroundColor: "transparent",
+              transform: "scale(1.03)"
             },
           }}
         >

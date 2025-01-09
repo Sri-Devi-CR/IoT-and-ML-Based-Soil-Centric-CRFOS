@@ -11,8 +11,10 @@ import {
   MDBIcon,
 } from "mdb-react-ui-kit";
 import "./register.css";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
+  const navigate=useNavigate()
   return (
     <MDBContainer
       fluid
@@ -224,6 +226,7 @@ function Register() {
                   fontWeight: "bold",
                   boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.2)",
                 }}
+                onClick={()=>navigate('/login')}
               >
                 Sign Up
               </MDBBtn>

@@ -12,8 +12,10 @@ import {
 } from 'mdb-react-ui-kit';
 import { Container } from '@mui/material';
 import './login.css'; // Add a CSS file for styles
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
+  const navigate=useNavigate()
   return (
     <MDBContainer
       fluid
@@ -163,6 +165,7 @@ function Login() {
                   fontWeight: "bold",
                   boxShadow: "0px 2px 10px rgba(0, 0, 0, 0.2)",
                 }}
+                onClick={()=>navigate("/home")}
               >
                 Log In
               </MDBBtn>

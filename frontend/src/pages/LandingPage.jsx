@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"
 import {
-  
+
   Typography,
   Button,
   Container,
@@ -16,6 +16,7 @@ import {
   useMediaQuery,
   CssBaseline,
 } from "@mui/material";
+import { motion } from "framer-motion"
 
 const theme = createTheme({
   palette: {
@@ -52,9 +53,16 @@ const theme = createTheme({
 });
 
 
-const HomePage = () => {
+const LandingPage = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-  const navigate=useNavigate()
+  const navigate = useNavigate()
+  const cardVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+    hover: {
+      boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.2)",
+    },
+  };
 
   return (
     <ThemeProvider theme={theme}>
@@ -110,9 +118,13 @@ const HomePage = () => {
               fontFamily: "MyCustomFont",
               fontSize: "90%",
               color: "#323232",
+              transition: "transform 0.3s",
+
               "&:hover": {
                 backgroundColor: "#449c45",
                 color: "#222222",
+
+                transform: "scale(1.025)",
                 boxShadow: "1px 3px 15px 5px rgba(40,91,40, 0.7)",
               },
             }}
@@ -144,11 +156,29 @@ const HomePage = () => {
         >
           Explore the key benefits of our intelligent agricultural system.
         </Typography>
+
         <Grid container spacing={4} justifyContent="center">
+
           {/* Feature 1 */}
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4} initial="hidden"
+            whileInView="visible"
+            // viewport={{ once: true, amount: 1 }}
+            // variants={cardVariants}
+            
+          >
             <Card
-              sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+              sx={{
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                transition: "transform 0.3s",
+                
+
+                "&:hover": {
+                  cursor: "pointer",
+                  transform: "scale(1.025)"
+                }
+              }}
             >
               <CardMedia
                 component="img"
@@ -163,6 +193,7 @@ const HomePage = () => {
                   sx={{
                     fontFamily: "Paris2024",
                     fontSize: "135%",
+                   
                   }}
                 >
                   Soil Analysis
@@ -174,9 +205,16 @@ const HomePage = () => {
             </Card>
           </Grid>
           {/* Feature 2 */}
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} sm={6} md={4} initial="hidden">
             <Card
-              sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+              sx={{
+                height: "100%", display: "flex", flexDirection: "column",
+                transition: "transform 0.3s",
+                "&:hover": {
+                  cursor: "pointer",
+                  transform: "scale(1.025)"
+                }
+              }}
             >
               <CardMedia
                 component="img"
@@ -204,7 +242,14 @@ const HomePage = () => {
           {/* Feature 3 */}
           <Grid item xs={12} sm={6} md={4}>
             <Card
-              sx={{ height: "100%", display: "flex", flexDirection: "column" }}
+              sx={{
+                height: "100%", display: "flex", flexDirection: "column",
+                transition: "transform 0.3s",
+                "&:hover": {
+                  cursor: "pointer",
+                  transform: "scale(1.025)"
+                }
+              }}
             >
               <CardMedia
                 component="img"
@@ -259,8 +304,8 @@ const HomePage = () => {
           </Link>
         </Container>
       </Box>
-    </ThemeProvider>
+    </ThemeProvider >
   );
 };
 
-export default HomePage;
+export default LandingPage;
