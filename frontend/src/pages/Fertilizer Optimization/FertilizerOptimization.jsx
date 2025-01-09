@@ -39,6 +39,7 @@ function FertilizerOptimization() {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
+        
       }}
     >
       <motion.div
@@ -50,9 +51,11 @@ function FertilizerOptimization() {
         <MDBCard
           className="glass-effect"
           style={{
+            marginTop:"40px",
             background: "rgba(50, 50, 50, 0.25)",
             borderRadius: "15px",
             boxShadow: "0 8px 32px 0 rgba(6, 6, 13, 0.37)",
+            transition:"backdropFilter 10s",
             backdropFilter: "blur(20px)",
             WebkitBackdropFilter: "blur(10px)",
             border: "1px solid rgba(255, 255, 255, 0.18)",

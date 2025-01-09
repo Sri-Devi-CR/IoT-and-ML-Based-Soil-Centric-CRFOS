@@ -19,6 +19,7 @@ function FertilizerResults() {
         justifyContent: "center",
         alignItems: "center",
         height: "100vh",
+      
       }}
     >
       <MDBCard
@@ -31,6 +32,7 @@ function FertilizerResults() {
           border: "1px solid rgba(255, 255, 255, 0.18)",
           padding: "2rem",
           maxWidth: "500px",
+          
         }}
       >
         <MDBCardBody>
