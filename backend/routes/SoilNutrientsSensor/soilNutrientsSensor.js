@@ -5,7 +5,7 @@ import {
   getSoilNutrientById,
   updateSoilNutrient,
   deleteSoilNutrient,
-} from '../../services/SoilNutrients/soilNutrientsService.js';
+} from '../../services/SoilNutrientsSensor/soilNutrientsService.js';
 
 const router = express.Router();
 

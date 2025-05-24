@@ -1,97 +1,151 @@
-import React from "react";
-import { MDBContainer, MDBCard, MDBCardBody, MDBBtn } from "mdb-react-ui-kit";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { Container, Paper, Typography, Box, Button, CircularProgress } from "@mui/material";
+import { motion } from "framer-motion";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../../services/authContext";
 
-function FertilizerResults() {
+const FertilizerResults = () => {
   const navigate = useNavigate();
-  const randomFertilizerValues = {
-    nitrogen: Math.floor(Math.random() * 50 + 50),
-    phosphorus: Math.floor(Math.random() * 50 + 50),
-    potassium: Math.floor(Math.random() * 50 + 50),
+  const location = useLocation();
+  const { requestBody, receivedData } = location.state;
+  const { user } = useAuth();
+  const [fertilizerData, setFertilizerData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const fetchFertilizerRecommendation = async () => {
+    try {
+      console.log("receivedData:", receivedData)
+      console.log("request body:", requestBody)
+      const response = await axios.post("http://127.0.0.1:5000/optimize-fertilizer", requestBody);
+      setFertilizerData(response.data);
+
+      const storeRequestBody = {
+        ...requestBody,
+        Crop: requestBody.Crop,
+        Nitrogen: response.data.Nitrogen,
+        Phosphorus: response.data.Phosphorus,
+        Potassium: response.data.Potassium,
+      };
+      if(user){
+        storeRequestBody.userId = user.id
+      }
+      console.log("Final body for storing:", storeRequestBody);
+      await axios.post(`http://localhost:4200/store-recommendation-fertilizer`, storeRequestBody);
+    } catch (err) {
+      console.error("Error fetching or storing fertilizer recommendation:", err);
+      setError("Failed to fetch or store fertilizer recommendation. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
+  useEffect(() => {
+    fetchFertilizerRecommendation();
+  }, []);
+
+  const HandleClick = () => {
+    if (user) {
+      navigate("/Dashboard")
+    }
+    else {
+      navigate("/ua/home")
+    }
+  }
   return (
-    <MDBContainer
-      className="p-4 background-container6"
-      fluid
-      style={{
+    <Container
+      maxWidth="xl"
+      disableGutters
+      className="background-container6"
+      sx={{
+        height: "100vh",
+        py: 6,
+        px: { xs: 2, sm: 4 },
+        background: "linear-gradient(135deg, #0f2027, #203a43, #254756)",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
-      
+        gap: 10
       }}
     >
-      <MDBCard
-        style={{
-          background: "rgba(50, 50, 50, 0.25)",
-          borderRadius: "15px",
-          boxShadow: "0 8px 32px 0 rgba(6, 6, 13, 0.37)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(10px)",
-          border: "1px solid rgba(255, 255, 255, 0.18)",
-          padding: "2rem",
-          maxWidth: "500px",
-          
-        }}
+      <motion.div
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
       >
-        <MDBCardBody>
-          <h2
-            style={{
+        <Typography
+          variant="h3"
+          align="center"
+          fontWeight={700}
+          sx={{
+            mb: 4,
+            color: "#4caf50",
+            textShadow: "0 0 12px rgba(73, 168, 121, 0.8)",
+          }}
+        >
+          Fertilizer <br />
+          Recommendation
+        </Typography>
+      </motion.div>
+
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Box display="flex" justifyContent="center">
+          <Paper
+            elevation={6}
+            sx={{
+              p: { xs: 3, md: 5 },
+              maxWidth: "500px",
+              borderRadius: "20px",
+              background: "rgba(230, 230, 230, 0.06)",
+              backdropFilter: "blur(12px)",
+              border: "1px solid #00e67644",
+              boxShadow: "0 10px 30px rgba(58, 131, 94, 0.2)",
+              color: "#fff",
               textAlign: "center",
-              color: "#81c784",
-              fontFamily: "Paris2024",
-              fontSize: "2rem",
-              fontWeight: "bold",
             }}
           >
-            Fertilizer Recommendation
-          </h2>
+            {loading ? (
+              <CircularProgress sx={{ color: "#4caf50" }} />
+            ) : error ? (
+              <Typography sx={{ color: "red", fontSize: "1.2rem" }}>{error}</Typography>
+            ) : (
+              <>
+                <Typography variant="h6" gutterBottom>
+                  Based on the crop and soil nutrient levels, adjust the fertilizer levels as follows:
+                </Typography>
+                <ul style={{ listStyle: "none", padding: 0 }}>
+                  <li>Nitrogen: {fertilizerData?.Nitrogen}</li>
+                  <li>Phosphorus: {fertilizerData?.Phosphorus}</li>
+                  <li>Potassium: {fertilizerData?.Potassium}</li>
+                </ul>
+              </>
+            )}
 
-          <p
-            style={{
-              textAlign: "center",
-              color: "white",
-              fontFamily: "CWCReg",
-              marginBottom: "1.5rem",
-            }}
-          >
-            Based on the crop and land size, apply the following fertilizer
-            values per acre for optimal growth:
-          </p>
-
-          <ul
-            style={{
-              listStyleType: "none",
-              padding: 0,
-              color: "white",
-              fontFamily: "CWCReg",
-              fontSize: "1.2rem",
-            }}
-          >
-            <li>Nitrogen: {randomFertilizerValues.nitrogen} g</li>
-            <li>Phosphorus: {randomFertilizerValues.phosphorus} g</li>
-            <li>Potassium: {randomFertilizerValues.potassium} g</li>
-          </ul>
-
-          <MDBBtn
-            className="w-100 mt-4"
-            size="md"
-            style={{
-              backgroundColor: "#81c784",
-              borderRadius: "5px",
-              color: "#323232",
-              fontFamily: "Paris2024",
-              fontWeight: "bold",
-            }}
-            onClick={() => navigate("/home")}
-          >
-            Back to Home
-          </MDBBtn>
-        </MDBCardBody>
-      </MDBCard>
-    </MDBContainer>
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{
+                  mt: 3,
+                  bgcolor: "#4caf50",
+                  color: "#fff",
+                  fontWeight: "bold",
+                  "&:hover": { bgcolor: "#388e3c" },
+                }}
+                onClick={HandleClick}
+              >
+                Go to Dashboard
+              </Button>
+            </motion.div>
+          </Paper>
+        </Box>
+      </motion.div>
+    </Container>
   );
-}
+};
 
 export default FertilizerResults;

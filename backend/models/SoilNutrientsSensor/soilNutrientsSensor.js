@@ -22,14 +22,6 @@ const soilNutrientSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    soilType: {
-      type: String,
-      required: true,
-    },
-    region: {
-      type: String,
-      required: true,
-    },
     timestamp: {
       type: Date,
       default: Date.now,
@@ -38,5 +30,5 @@ const soilNutrientSchema = new mongoose.Schema(
   { timestamps: true } 
 );
 
-const SoilNutrient = mongoose.model('SoilNutrient', soilNutrientSchema);
-export default SoilNutrient;
+const SoilNutrientSensor = mongoose.model('SoilNutrientSensor', soilNutrientSchema);
+export default SoilNutrientSensor;

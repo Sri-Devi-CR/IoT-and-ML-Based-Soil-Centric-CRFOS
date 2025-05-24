@@ -1,16 +1,16 @@
-import SoilNutrient from '../../models/SoilNutrients/soilNutrients.js';
+import SoilNutrientSensor from '../../models/SoilNutrientsSensor/soilNutrientsSensor.js';
 
 const addSoilNutrients = async (data) => {
-  const newRecord = new SoilNutrient(data);
+  const newRecord = new SoilNutrientSensor(data);
   return await newRecord.save();
 };
 
 const getAllSoilNutrients = async () => {
-  return await SoilNutrient.find().sort({ createdAt: -1 }); 
+  return await SoilNutrientSensor.find().sort({ createdAt: -1 }); 
 };
 
 const getSoilNutrientById = async (id) => {
-  const record = await SoilNutrient.findById(id);
+  const record = await SoilNutrientSensor.findById(id);
   if (!record) {
     throw new Error('Record not found');
   }
@@ -18,7 +18,7 @@ const getSoilNutrientById = async (id) => {
 };
 
 const updateSoilNutrient = async (id, data) => {
-  const updatedRecord = await SoilNutrient.findByIdAndUpdate(id, data, { new: true });
+  const updatedRecord = await SoilNutrientSensor.findByIdAndUpdate(id, data, { new: true });
   if (!updatedRecord) {
     throw new Error('Record not found');
   }
@@ -26,7 +26,7 @@ const updateSoilNutrient = async (id, data) => {
 };
 
 const deleteSoilNutrient = async (id) => {
-  const deletedRecord = await SoilNutrient.findByIdAndDelete(id);
+  const deletedRecord = await SoilNutrientSensor.findByIdAndDelete(id);
   if (!deletedRecord) {
     throw new Error('Record not found');
   }

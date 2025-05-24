@@ -1,6 +1,4 @@
 .background-container3 {
-    overflow: hidden;
-    background-image: linear-gradient(to left, rgba(10, 17, 11, 0.5) 0%, rgba(129, 199, 132, 0.4) 100%),url('../../../public/images/background2.jpg'); /* Replace with your image URL */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -9,6 +7,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    gap:"12px"
 }
 .background-container5 {
     overflow: hidden;

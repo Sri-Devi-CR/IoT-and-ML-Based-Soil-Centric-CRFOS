@@ -1,90 +1,145 @@
-import React from "react";
-import { MDBContainer, MDBCard, MDBCardBody, MDBBtn } from "mdb-react-ui-kit";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../../services/authContext";
+import { Container, Paper, Typography, Box, Button, CircularProgress } from "@mui/material";
+import { motion } from "framer-motion";
 
 function ResultPage() {
   const navigate = useNavigate();
-  const randomCrop = ["Rice", "Wheat", "Maize", "Sugarcane", "Cotton"][
-    Math.floor(Math.random() * 5)
-  ];
+  const location = useLocation();
+  const { user } = useAuth();
+  const [recommendedCrop, setRecommendedCrop] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  const requestBody = location.state;
+
+  const fetchRecommendation = async () => {
+    try {
+      const response = await axios.post("http://127.0.0.1:5000/recommend-crop", requestBody);
+      setRecommendedCrop(response.data.Recommended_Crop);
+      setLoading(false);
+    } catch (err) {
+      console.error("Error fetching crop recommendation:", err);
+      setError("Failed to fetch crop recommendation. Please try again.");
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchRecommendation();
+  }, []);
+
+  useEffect(() => {
+    if (recommendedCrop) {
+      const storeRequestBody = {
+        ...requestBody,
+        userId: user?.id || null,
+        Crop: recommendedCrop,
+      };
+      axios.post("http://localhost:4200/store-recommendation-crop", storeRequestBody)
+        .then(response => console.log("Crop recommendation stored:", response))
+        .catch(error => console.log("Error saving crop recommendation:", error));
+    }
+  }, [recommendedCrop]);
+
+  const HandleClick = () => {
+    if(user){
+      navigate("/Dashboard")
+    }
+    else{
+      navigate("/ua/home")
+    }
+  }
 
   return (
-    <MDBContainer
-      className="p-4 background-container5"
-      fluid
-      style={{
+    <Container
+      maxWidth="xl"
+      disableGutters
+      className="background-container5"
+      sx={{
+        height: "100vh",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
-        width: "100%",
-        // backgroundColor:"pink"
+        gap: 10,
+        background: "linear-gradient(135deg, #0f2027, #203a43, #254756)",
       }}
     >
-      <MDBCard
-        style={{
-          background: "rgba(50, 50, 50, 0.25)",
-          borderRadius: "15px",
-          boxShadow: "0 8px 32px 0 rgba(6, 6, 13, 0.37)",
-          backdropFilter: "blur(20px)",
-          WebkitBackdropFilter: "blur(10px)",
-          border: "1px solid rgba(255, 255, 255, 0.18)",
-          padding: "2rem",
-          maxWidth: "500px",
-        }}
+      <motion.div
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
       >
-        <MDBCardBody>
-          <h2
-            style={{
+        <Typography
+          variant="h3"
+          align="center"
+          fontWeight={700}
+          sx={{ mb: 4, color: "#4caf50", textShadow: "0 0 12px rgba(73, 168, 121, 0.8)" }}
+        >
+          Crop<br /> Recommendation
+        </Typography>
+      </motion.div>
+
+      <motion.div
+        initial={{ scale: 0.95, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+      >
+        <Box display="flex" justifyContent="center">
+          <Paper
+            elevation={6}
+            sx={{
+              p: { xs: 3, md: 5 },
+              maxWidth: "500px",
+              borderRadius: "20px",
+              background: "rgba(230, 230, 230, 0.06)",
+              backdropFilter: "blur(12px)",
+              border: "1px solid #00e67644",
+              boxShadow: "0 10px 30px rgba(58, 131, 94, 0.2)",
+              color: "#fff",
               textAlign: "center",
-              color: "#81c784",
-              fontFamily: "Paris2024",
-              fontSize: "2rem",
-              fontWeight: "bold",
             }}
           >
-            Recommended Crop
-          </h2>
-          <h3
-            style={{
-              textAlign: "center",
-              marginTop: "1rem",
-              marginBottom: "1rem",
-              color: "white",
-              fontFamily: "CWCReg",
-              fontSize: "1.8rem",
-            }}
-          >
-            {randomCrop}
-          </h3>
-          <p
-            style={{
-              color: "white",
-              fontFamily: "CWCReg",
-              textAlign: "center",
-            }}
-          >
-            Based on the given soil type, planting season, and nutrient levels,
-            {randomCrop} is the most suitable crop for your field. Ensure proper
-            irrigation and care for optimal yield.
-          </p>
-          <MDBBtn
-            className="w-100"
-            size="md"
-            style={{
-              backgroundColor: "#81c784",
-              color: "#323232",
-              fontFamily: "Paris2024",
-              fontWeight: "bold",
-              marginTop: "1rem",
-            }}
-            onClick={()=>navigate('/home') }
-          >
-            Back to Home
-          </MDBBtn>
-        </MDBCardBody>
-      </MDBCard>
-    </MDBContainer>
+            {loading ? (
+              <CircularProgress sx={{ color: "#4caf50" }} />
+            ) : error ? (
+              <Typography sx={{ color: "red", fontSize: "1.2rem" }}>{error}</Typography>
+            ) : (
+              <>
+                <Typography variant="h6" gutterBottom>
+                  Based on the given soil type and nutrient levels, the most suitable crop is:
+                </Typography>
+                <Typography variant="h4" sx={{ color: "#4caf50", fontWeight: "bold" }}>
+                  {recommendedCrop}
+                </Typography>
+                <Typography sx={{ mt: 2, fontSize: "1rem", color: "#ddd" }}>
+                Ensure proper irrigation and care for optimal yield. For even better results, 
+                use our Fertilizer Optimizer to determine the perfect nutrient balance and maximize your yield.
+                </Typography>
+              </>
+            )}
+
+            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+              <Button
+                fullWidth
+                variant="contained"
+                sx={{
+                  mt: 3,
+                  bgcolor: "#4caf50",
+                  color: "#fff",
+                  fontWeight: "bold",
+                  "&:hover": { bgcolor: "#388e3c" },
+                }}
+                onClick={HandleClick}
+              >
+                Go to Dashboard
+              </Button>
+            </motion.div>
+          </Paper>
+        </Box>
+      </motion.div>
+    </Container>
   );
 }
 
